@@ -1,7 +1,6 @@
 FROM alpine:latest
 
-ARG VER="2020.12"
-LABEL version="3.1.0" maintainer="JJMerelo@GMail.com" rakuversion=$VER
+LABEL version="0.0.1" maintainer="JJMerelo@GMail.com"
 
 # Set up as root
 ENV PKGS="git make gcc musl-dev" \
@@ -12,7 +11,7 @@ RUN apk update && apk upgrade \
 
 
 RUN git clone https://github.com/MoarVM/MoarVM.git \
-    && cd MoarVM \ 
+    && cd MoarVM \
     && perl Configure.pl && make
 
 RUN apk del $PKGS_TMP
