@@ -1,7 +1,0 @@
-#!/usr/bin/env perl
-
-for my $k (keys %ENV ) {
-  unless ( $k =~ /PRIVATE/ ) {
-    print "$k → ", $ENV{$k}, "\n\n";
-  }
-}
