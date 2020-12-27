@@ -1,0 +1,4 @@
+#!/usr/bin/env perl
+
+perldoc -q installed;
+print %ENV;
