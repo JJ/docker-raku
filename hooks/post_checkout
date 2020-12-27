@@ -1,3 +1,5 @@
 #!/usr/bin/env perl
 
-print %ENV;
+for my $k (keys %ENV ) {
+  print "$k → ", %ENV{$k}, "\n\n";
+}
