@@ -1,3 +1,5 @@
 #!/bin/bash
 
-for M in `perldoc -t perllocal|grep Module |sed -e 's/^.*" //'`; do V=`perldoc -t perllocal|awk "/$M/{y=1;next}y" |grep VERSION |head -n 1`; printf "%30s %s\n" "$M" "$V"; done |sort
+grep -RhIP '^package [A-Z][\w:]+;' `perl -e 'print join " ",@INC'` | sed 's/package //' | sort | uniq
+perl -MExtUtils::Installed -e '$i=ExtUtils::Installed->new(); print "$_ ".$i->version($_)."\n" for $i->modules();'
+
