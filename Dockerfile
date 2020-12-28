@@ -12,7 +12,10 @@ RUN apk update && apk upgrade \
 
 RUN git clone https://github.com/MoarVM/MoarVM.git \
     && cd MoarVM \
-    && perl Configure.pl && make
+    && perl Configure.pl \
+    && make \
+    && echo $PWD \
+    && ls
 
 RUN apk del $PKGS_TMP
 
