@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:latest as base
 
 LABEL version="0.0.1" maintainer="JJMerelo@GMail.com"
 
@@ -15,5 +15,9 @@ RUN git clone https://github.com/MoarVM/MoarVM.git \
     && perl Configure.pl && make
 
 RUN apk del $PKGS_TMP
+
+FROM alpine:latest
+
+COPY --from=base /MoarVM/moarvm .
 
 ENTRYPOINT ["moarvm"]
