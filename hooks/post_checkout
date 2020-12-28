@@ -1,5 +1,5 @@
 #!/bin/bash
 
 grep -RhIP '^package [A-Z][\w:]+;' `perl -e 'print join " ",@INC'` | sed 's/package //' | sort | uniq
-perl -MExtUtils::Installed -e '$i=ExtUtils::Installed->new(); print "$_ ".$i->version($_)."\n" for $i->modules();'
+
 

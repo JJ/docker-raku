@@ -21,6 +21,6 @@ RUN apk del $PKGS_TMP
 
 FROM alpine:latest
 
-COPY --from=base /MoarVM/moarvm .
+COPY --from=base /MoarVM/moar .
 
 ENTRYPOINT ["moarvm"]
