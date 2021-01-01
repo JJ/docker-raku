@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install perl-doc
+apt-get install perl-doc
 for M in `perldoc -t perllocal|grep Module |sed -e 's/^.*" //'`; do V=`perldoc -t perllocal|awk "/$M/{y=1;next}y" |grep VERSION |head -n 1`; printf "%30s %s\n" "$M" "$V"; done |sort
 
 
