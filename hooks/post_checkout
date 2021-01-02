@@ -1,8 +1,5 @@
 #!/bin/bash
 
-apt update
-apt upgrade
-apt-get install perl-doc
-perldoc -q installed
+cpan -l
 
 
