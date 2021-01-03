@@ -1,5 +1,7 @@
 FROM alpine:latest as base
 
+ARG RAKU_RELEASE
+
 # Set up as root
 ENV PKGS="git make gcc musl-dev" \
     PKGS_TMP="perl linux-headers bash"
