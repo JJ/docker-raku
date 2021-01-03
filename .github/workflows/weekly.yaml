@@ -1,4 +1,4 @@
-name: CD to Docker hub
+name: Deploy weekly to Docker hub
 
 on:
   push:
