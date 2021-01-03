@@ -30,8 +30,8 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: nightly/
-          file: ./nightly/Dockerfile
+          context: .
+          file: Dockerfile
           push: true
           tags: jjmerelo/raku:weekly.${{ steps.date_tag.outputs.DATE_TAG }}
       - name: Image digest
