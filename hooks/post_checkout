@@ -1,5 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env perl
 
-cpan -l
+use Git;
+my $repo = Git->repository (Directory => '.');
 
+my @modified_files = $repo->command('diff', "--name-only", "HEAD", "HEAD^");
 
+exit 1  unless @modified_files.grep( "Dockerfile");
