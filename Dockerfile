@@ -3,8 +3,7 @@ FROM alpine:latest as base
 ARG RAKU_RELEASE
 
 # Set up as root
-ENV PKGS="git make gcc musl-dev" \
-    PKGS_TMP="perl linux-headers bash"
+ENV PKGS="git make gcc musl-dev perl linux-headers bash"
 
 RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP
@@ -28,8 +27,6 @@ RUN git clone https://github.com/MoarVM/MoarVM.git \
     && make install \
     && ls /usr/share/nqp/
 
-RUN apk del $PKGS_TMP
-
 FROM alpine:latest
 
 LABEL version="0.0.1" maintainer="JJMerelo@GMail.com"
@@ -38,7 +35,6 @@ COPY --from=base /usr/lib/libmoar.so /usr/lib
 COPY --from=base /usr/share/nqp/  /usr/share/nqp
 COPY --from=base /usr/share/perl6/  /usr/share/perl6
 COPY --from=base /usr/bin/moar /usr/bin/nqp  /usr/bin/raku   /usr/bin/
-
 
 RUN addgroup -S raku  && adduser -S raku -G raku --home /home/raku
 

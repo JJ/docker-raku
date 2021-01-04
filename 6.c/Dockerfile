@@ -24,7 +24,7 @@ RUN git clone https://github.com/MoarVM/MoarVM.git \
     && echo c > tools/templates/RAKU_SPECS\
     && perl Configure.pl --backends=moar --prefix /usr \
     && cat Makefile \
-    && make -n install \
+    && make -i -n install \
     && ls /usr/share/nqp/
 
 RUN apk del $PKGS_TMP
