@@ -21,7 +21,8 @@ RUN git clone https://github.com/MoarVM/MoarVM.git \
     && cd .. \
     && git clone  https://github.com/rakudo/rakudo.git \
     && cd rakudo \
-    && printf "*c\n" > tools/templates/RAKU_SPECS\
+    && printf "c\n*d\n" > tools/templates/RAKU_SPECS\
+    && cat tools/templates/RAKU_SPECS\
     && perl Configure.pl --backends=moar --prefix /usr \
     && cat Makefile \
     && make -i -n install \
