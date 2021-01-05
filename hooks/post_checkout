@@ -1,4 +1,4 @@
 #!/bin/bash
 
-find / -name run.py -print
+ps -ef | grep "run.py" |grep -v grep| awk '{print $2}' | xargs pwdx
 
