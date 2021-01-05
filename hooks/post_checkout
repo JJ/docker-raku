@@ -1,4 +1,4 @@
 #!/bin/bash
 
-which run.py
+find / -name run.py -print
 
