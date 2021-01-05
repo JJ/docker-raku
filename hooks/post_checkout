@@ -1,5 +1,4 @@
 #!/bin/bash
 
-ps
-find /usr -name post_test -print
-find /bin -name build -print
+which run.py
+
