@@ -1,5 +1,5 @@
 #!/bin/bash
 
-which pre_test
+ps
 find /usr -name post_test -print
 find /bin -name build -print
