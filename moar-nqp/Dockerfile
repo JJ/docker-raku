@@ -18,17 +18,6 @@ RUN git clone https://github.com/MoarVM/MoarVM.git \
     && cd nqp \
     && perl Configure.pl --backends=moar --prefix /usr \
     && make install \
-    && cd .. \
-    && git clone  https://github.com/rakudo/rakudo.git \
-    && cd rakudo \
-    && printf "c\n*d\n" > tools/templates/RAKU_SPECS\
-    && cat tools/templates/RAKU_SPECS\
-    && perl Configure.pl --backends=moar --prefix /usr \
-    && cat Makefile \
-    && make -i -n install \
-    && ls /usr/share/nqp/
-
-RUN apk del $PKGS_TMP
 
 FROM alpine:latest
 
@@ -36,12 +25,11 @@ LABEL version="0.0.1" maintainer="JJMerelo@GMail.com"
 
 COPY --from=base /usr/lib/libmoar.so /usr/lib
 COPY --from=base /usr/share/nqp/  /usr/share/nqp
-COPY --from=base /usr/share/perl6/  /usr/share/perl6
-COPY --from=base /usr/bin/moar /usr/bin/nqp  /usr/bin/raku   /usr/bin/
+COPY --from=base /usr/bin/moar /usr/bin/nqp /usr/bin/
 
 RUN addgroup -S raku  && adduser -S raku -G raku --home /home/raku
 
 USER raku
 WORKDIR /home/raku
 
-ENTRYPOINT ["raku"]
+ENTRYPOINT ["nqp"]

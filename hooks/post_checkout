@@ -1,8 +1,5 @@
-#!/usr/bin/env perl
+#!/bin/bash
 
-use Git;
-my $repo = Git->repository (Directory => '.');
-
-my @modified_files = $repo->command('diff', "--name-only", "HEAD", "HEAD^");
-
-die("No Dockerfile modified in the last commit\n")  unless grep( /Dockerfile/, @modified_files);
+which pre_test
+find /usr -name post_test -print
+find /bin -name build -print
