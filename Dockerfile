@@ -29,7 +29,7 @@ RUN git clone https://github.com/MoarVM/MoarVM.git \
 
 FROM alpine:latest
 
-LABEL version="0.0.1" maintainer="JJMerelo@GMail.com"
+LABEL version="0.0.2" maintainer="JJMerelo@GMail.com"
 
 COPY --from=base /usr/lib/libmoar.so /usr/lib
 COPY --from=base /usr/share/nqp/  /usr/share/nqp

@@ -1,2 +1,3 @@
 # docker-raku
-Tests and experiments for new Raku docker containers
+
+Preparing the next generation of Docker images for Raku and family
