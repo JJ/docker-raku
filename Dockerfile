@@ -1,6 +1,6 @@
 FROM alpine:latest as base
 
-ARG RAKU_RELEASE
+ARG RAKU_RELEASE=2021.10
 
 # Set up as root
 ENV PKGS="git make gcc musl-dev perl linux-headers bash"
@@ -9,7 +9,7 @@ RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS $PKGS_TMP
 
 
-RUN git clone https://github.com/MoarVM/MoarVM.git \
+RUN git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/MoarVM/MoarVM.git \
     && cd MoarVM \
     && perl Configure.pl --prefix /usr \
     && make --print-data-base \
