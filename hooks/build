@@ -15,7 +15,7 @@ for my $tag ( @tags ) {
   `docker build . -f Dockerfile --build-arg VER=$tag -t $image`;
   `docker push $image`;
   if ( $tag eq $tags[-1] ) {
-    `docker tag  jjmerelo/-raku:$tag  jjmerelo/$image_name:latest`;
-    `docker push  jjmerelo/$image_name:latest`;
+    `docker tag $image  jjmerelo/$image_name:latest`;
+    `docker push jjmerelo/$image_name:latest`;
   }
 }
