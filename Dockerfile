@@ -16,12 +16,12 @@ RUN git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/MoarVM/MoarV
     && make install\
     && echo $PWD \
     && cd .. \
-    && git clone git://github.com/Raku/nqp.git \
+    && git clone --depth 1 --branch ${RAKU_RELEASE} git://github.com/Raku/nqp.git \
     && cd nqp \
     && perl Configure.pl --backends=moar --prefix /usr \
     && make install \
     && cd .. \
-    && git clone https://github.com/rakudo/rakudo.git \
+    && git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/rakudo/rakudo.git \
     && cd rakudo \
     && perl Configure.pl --backends=moar --prefix /usr \
     && make install \
@@ -29,7 +29,7 @@ RUN git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/MoarVM/MoarV
 
 FROM alpine:latest
 
-LABEL version="0.0.2" maintainer="JJMerelo@GMail.com"
+LABEL version="0.1.0" maintainer="JJMerelo@GMail.com"
 
 COPY --from=base /usr/lib/libmoar.so /usr/lib
 COPY --from=base /usr/share/nqp/  /usr/share/nqp
