@@ -10,8 +10,8 @@ my @tags = qw(2020.01 2020.02 2020.05.1 2020.06 2020.07 2020.08.2 2020.09 2020.1
 my $image_name = "raku";
 
 for my $tag ( @tags ) {
-  say "👷 Building for $tag";
   my $image = "jjmerelo/$image_name:$tag";
+  say "👷 Building $image";
   `docker build . -f Dockerfile --build-arg VER=$tag -t $image`;
   `docker push $image`;
   if ( $tag eq $tags[-1] ) {
