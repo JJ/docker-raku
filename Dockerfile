@@ -11,7 +11,6 @@ RUN apk update && apk upgrade \
     && perl Configure.pl --prefix /usr \
     && make --print-data-base \
     && make install\
-    && echo $PWD \
     && cd .. \
     && git clone --depth 1 --branch ${RAKU_RELEASE} git://github.com/Raku/nqp.git \
     && cd nqp \

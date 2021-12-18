@@ -11,8 +11,8 @@ my $image_name = "raku";
 
 for my $release ( @tags ) {
   my @build_tags = ($release, "gha-$release");
-  for my $my_tag ( @build_tags ) {
-    my $image = "jjmerelo/$image_name:$my_tag";
+  for my $tag ( @build_tags ) {
+    my $image = "jjmerelo/$image_name:$tag";
     my $uid = $tag =~ /gha/ ? 1001: 1000;
     say "👷 Building $image";
     `docker build . -f Dockerfile --build-arg RAKU_RELEASE=$release --build-arg UID=$uid -t $image`;
