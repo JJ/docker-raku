@@ -2,7 +2,6 @@ FROM alpine:latest as base
 
 ARG RAKU_RELEASE=2021.10
 
-# Set up as root
 ENV PKGS="git make gcc musl-dev perl linux-headers bash"
 
 RUN apk update && apk upgrade \

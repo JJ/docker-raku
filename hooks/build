@@ -10,7 +10,7 @@ my @tags = qw(2020.01 2020.02 2020.05.1 2020.06 2020.07 2020.08.2 2020.09 2020.1
 my $image_name = "raku";
 
 for my $release ( @tags ) {
-  my @build_tags = ($release, "gha-$tag");
+  my @build_tags = ($release, "gha-$release");
   for my $my_tag ( @build_tags ) {
     my $image = "jjmerelo/$image_name:$my_tag";
     my $uid = $tag =~ /gha/ ? 1001: 1000;
