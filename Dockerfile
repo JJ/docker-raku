@@ -28,15 +28,16 @@ RUN git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/MoarVM/MoarV
     && ls /usr/share/nqp/
 
 FROM alpine:latest
+ARG UID=1000
 
-LABEL version="0.1.0" maintainer="JJMerelo@GMail.com"
+LABEL version="0.2.0" maintainer="JJMerelo@GMail.com" raku_release=${RAKU_RELEASE} raku_user_uid=${UID}
 
 COPY --from=base /usr/lib/libmoar.so /usr/lib
 COPY --from=base /usr/share/nqp/  /usr/share/nqp
 COPY --from=base /usr/share/perl6/  /usr/share/perl6
 COPY --from=base /usr/bin/moar /usr/bin/nqp  /usr/bin/raku /usr/bin/perl6 /usr/bin/rakudo  /usr/bin/
 
-RUN addgroup -S raku  && adduser -S raku -G raku --home /home/raku
+RUN addgroup -S raku  && adduser -S raku -G raku --uid ${UID} --home /home/raku
 
 USER raku
 WORKDIR /home/raku
