@@ -9,13 +9,13 @@ my @tags = qw(2020.01 2020.02 2020.05.1 2020.06 2020.07 2020.08.2 2020.09 2020.1
 
 my $image_name = "raku";
 
-for my $tag ( @tags ) {
-  my @build_tags = ($tag, "gha-$tag");
+for my $release ( @tags ) {
+  my @build_tags = ($release, "gha-$tag");
   for my $my_tag ( @build_tags ) {
     my $image = "jjmerelo/$image_name:$my_tag";
     my $uid = $tag =~ /gha/ ? 1001: 1000;
     say "👷 Building $image";
-    `docker build . -f Dockerfile --build-arg RAKU_RELEASE=$my_tag --build-arg UID=$uid -t $image`;
+    `docker build . -f Dockerfile --build-arg RAKU_RELEASE=$release --build-arg UID=$uid -t $image`;
     `docker push $image`;
     if ( $tag eq $tags[-1] ) {
       `docker tag $image  jjmerelo/$image_name:latest`;
