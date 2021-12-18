@@ -6,10 +6,8 @@ ARG RAKU_RELEASE=2021.10
 ENV PKGS="git make gcc musl-dev perl linux-headers bash"
 
 RUN apk update && apk upgrade \
-    && apk add --no-cache $PKGS
-
-
-RUN git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/MoarVM/MoarVM.git \
+    && apk add --no-cache $PKGS \
+    && git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/MoarVM/MoarVM.git \
     && cd MoarVM \
     && perl Configure.pl --prefix /usr \
     && make --print-data-base \
