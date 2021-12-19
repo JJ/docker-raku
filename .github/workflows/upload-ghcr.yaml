@@ -24,13 +24,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
 
-      - name: Build and push container image
+      - name: Build and push to GHCR container image
         uses: docker/build-push-action@v2.7.0
         with:
           push: true
           tags: ${{ env.REGISTRY }}/jj/raku
 
-      - name: Build and push container image
+      - name: Build and push to GHCR GHA-specific image
         uses: docker/build-push-action@v2.7.0
         with:
           push: true
