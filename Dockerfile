@@ -25,6 +25,7 @@ RUN apk update && apk upgrade \
 
 FROM alpine:latest
 ARG UID=1000
+ARG USER_HOME=/home/raku
 
 LABEL version="0.2.0" maintainer="JJMerelo@GMail.com" raku_release=${RAKU_RELEASE} raku_user_uid=${UID}
 
@@ -33,9 +34,9 @@ COPY --from=base /usr/share/nqp/ /usr/share/nqp
 COPY --from=base /usr/share/perl6/ /usr/share/perl6
 COPY --from=base /usr/bin/moar /usr/bin/nqp /usr/bin/raku /usr/bin/perl6 /usr/bin/rakudo /usr/bin/
 
-RUN addgroup -S raku  && adduser -S raku -G raku --uid ${UID} --home /home/raku
+RUN addgroup -S raku  && adduser -S raku -G raku --uid ${UID} --home ${USER_HOME}
 
 USER raku
-WORKDIR /home/raku
+WORKDIR ${USER_HOME}
 
 ENTRYPOINT ["raku"]
