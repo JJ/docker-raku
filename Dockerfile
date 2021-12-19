@@ -34,6 +34,7 @@ COPY --from=base /usr/share/nqp/ /usr/share/nqp
 COPY --from=base /usr/share/perl6/ /usr/share/perl6
 COPY --from=base /usr/bin/moar /usr/bin/nqp /usr/bin/raku /usr/bin/perl6 /usr/bin/rakudo /usr/bin/
 
+RUN if [[ "$USER_HOME" == *"github"* ]]; then mkdir /github; fi
 RUN addgroup -S raku  && adduser -S raku -G raku --uid ${UID} --home ${USER_HOME}
 
 USER raku
