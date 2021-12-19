@@ -25,7 +25,6 @@ RUN apk update && apk upgrade \
 
 FROM alpine:latest
 ARG UID=1000
-ARG USER_HOME=/home/raku
 
 LABEL version="0.4.0" maintainer="JJMerelo@GMail.com" raku_release=${RAKU_RELEASE} raku_user_uid=${UID}
 
@@ -38,6 +37,6 @@ RUN mkdir /github \
     && addgroup -S raku  && adduser -S raku -G raku --uid ${UID}
 
 USER raku
-WORKDIR ${USER_HOME}
+WORKDIR /home/raku
 
 ENTRYPOINT ["raku"]

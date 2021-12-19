@@ -36,7 +36,6 @@ jobs:
           push: true
           build-args: |
             UID=1001
-            USER_HOME=/github/home
           tags: ${{ env.REGISTRY }}/jj/raku-gha
 
 
