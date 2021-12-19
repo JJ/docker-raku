@@ -27,14 +27,12 @@ jobs:
       - name: Build and push container image
         uses: docker/build-push-action@v2.7.0
         with:
-          context: .
           push: true
           tags: ${{ env.REGISTRY }}/jj/raku
 
       - name: Build and push container image
         uses: docker/build-push-action@v2.7.0
         with:
-          context: .
           push: true
           build-args: |
             UID=1001
