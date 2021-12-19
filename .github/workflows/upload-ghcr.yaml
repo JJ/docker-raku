@@ -17,9 +17,6 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout this
-        uses: actions/checkout@v2
-
       - name: Log in to GHCR
         uses: docker/login-action@v1.10.0
         with:
@@ -33,4 +30,15 @@ jobs:
           context: .
           push: true
           tags: ${{ env.REGISTRY }}/jj/raku
+
+      - name: Build and push container image
+        uses: docker/build-push-action@v2.7.0
+        with:
+          context: .
+          push: true
+          build-args: |
+            UID=1001
+            USER_HOME=/github/home
+          tags: ${{ env.REGISTRY }}/jj/raku-gha
+
 
