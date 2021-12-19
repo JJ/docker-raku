@@ -15,7 +15,7 @@ directory. Binaries for `raku` are installed in privileged directories, however.
 Images for all [Raku](https://raku.org) release from the beginning of 2020 [have
 been released](https://hub.docker.com/r/jjmerelo/raku/tags).
 
-They come on two flavors
+They come in two flavors
 
 * Regular, such as
   [2021.10](https://hub.docker.com/layers/jjmerelo/raku/2021.10/images/sha256-e48fc8148775ca9b81e73271caedb4700c80fff7ee7555363910bd77a8415fa6?context=explore).
