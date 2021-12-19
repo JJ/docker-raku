@@ -27,7 +27,7 @@ FROM alpine:latest
 ARG UID=1000
 ARG USER_HOME=/home/raku
 
-LABEL version="0.2.0" maintainer="JJMerelo@GMail.com" raku_release=${RAKU_RELEASE} raku_user_uid=${UID}
+LABEL version="0.3.0" maintainer="JJMerelo@GMail.com" raku_release=${RAKU_RELEASE} raku_user_uid=${UID}
 
 COPY --from=base /usr/lib/libmoar.so /usr/lib
 COPY --from=base /usr/share/nqp/ /usr/share/nqp

@@ -14,7 +14,7 @@ for my $release ( @tags ) {
   for my $tag ( @build_tags ) {
     my $image = "jjmerelo/$image_name:$tag";
     my $uid = $tag =~ /gha/ ? 1001: 1000;
-    my $home = $tag =~ /gha/ ? "/github/home": "/home/raku;
+    my $home = $tag =~ /gha/ ? "/github/home": "/home/raku";
     say "👷 Building $image";
     `docker build . -f Dockerfile --build-arg RAKU_RELEASE=$release --build-arg UID=$uid --build-arg USER_HOME=$home -t $image`;
     `docker push $image`;
