@@ -3,6 +3,7 @@ FROM alpine:latest as base
 ARG RAKU_RELEASE=2021.10
 
 ENV PKGS="git make gcc musl-dev perl linux-headers bash"
+ENV RAKULIB="inst#/home/raku/.raku"
 
 RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS \
@@ -33,7 +34,7 @@ COPY --from=base /usr/share/nqp/ /usr/share/nqp
 COPY --from=base /usr/share/perl6/ /usr/share/perl6
 COPY --from=base /usr/bin/moar /usr/bin/nqp /usr/bin/raku /usr/bin/perl6 /usr/bin/rakudo /usr/bin/
 
-ENV RAKULIB="inst#/home/raku/.raku"
+
 RUN mkdir /github \
     && addgroup -S raku  && adduser -S raku -G raku --uid ${UID}
 
