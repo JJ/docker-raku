@@ -15,6 +15,7 @@ directory. Binaries for `raku` are installed in privileged directories, however.
 Available from major registries:
 * [DockerHub](https://hub.docker.com/r/jjmerelo/raku)
 * [GHCR](https://github.com/JJ/docker-raku/pkgs/container/raku)
+* [quay.io](https://quay.io/repository/jjmerelo/raku)
 
 ## Versions
 
