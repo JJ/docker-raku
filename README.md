@@ -38,3 +38,9 @@ Available at [this GitHub repo](https://github.com/JJ/docker-raku). Raise your
 issues, or offer your help there.
 
 
+## See also
+
+This image is the base for a series of other images, also in two flavors,
+regular and GitHub Actions. Start with
+[`alpine-raku`](https://github.com/JJ/alpine-raku) and check there for their
+published images.
