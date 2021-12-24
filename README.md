@@ -1,4 +1,7 @@
-# jjmerelo/raku container
+# jjmerelo/raku container [![Docker Repository on
+Quay](https://quay.io/repository/jjmerelo/raku/status "Docker Repository on
+Quay")](https://quay.io/repository/jjmerelo/raku) [![Deploy weekly to Docker
+hub](https://github.com/JJ/docker-raku/actions/workflows/weekly.yaml/badge.svg)](https://github.com/JJ/docker-raku/actions/workflows/weekly.yaml) [![Test-create and publish a Docker image](https://github.com/JJ/docker-raku/actions/workflows/upload-ghcr.yaml/badge.svg)](https://github.com/JJ/docker-raku/actions/workflows/upload-ghcr.yaml)
 
 This is a bare-bones, lightweight, image that contains the bare
 [`raku`](https://raku.org) executables, without any frills. It's been created
