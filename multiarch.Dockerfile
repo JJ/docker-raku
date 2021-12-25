@@ -1,4 +1,4 @@
-FROM multiarch/alpine:latest as base
+FROM multiarch/alpine as base
 
 ARG RAKU_RELEASE=2021.12
 
