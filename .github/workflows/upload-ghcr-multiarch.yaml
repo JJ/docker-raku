@@ -3,7 +3,7 @@ name: Create and push to GHCR a multiarch image
 on:
   push:
     paths:
-      - multiarch.Dockerfile
+      - Dockerfile
       - .github/workflows/upload-ghcr-multiarch.yaml
 
 env:
@@ -36,8 +36,8 @@ jobs:
         uses: docker/build-push-action@v2.7.0
         with:
           push: true
-          file: ./multiarch.Dockerfile
-          platforms: linux/arm64,linux/ppc64le,linux/arm64/v8
+          file: ./Dockerfile
+          platforms: linux/arm/v6, linux/arm/v7,linux/ppc64le,linux/arm64/v8,linux/s390x
           tags: ${{ env.REGISTRY }}/jj/raku-multiarch
 
 
