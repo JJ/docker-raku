@@ -3,7 +3,7 @@ FROM alpine:latest as base
 ARG RAKU_RELEASE=2021.12
 
 ENV PKGS="git make gcc musl-dev perl linux-headers bash"
-ENV RAKULIB="/home/raku/.raku"
+ENV RAKULIB="inst#/home/raku/.raku"
 
 RUN apk update && apk upgrade \
     && apk add --no-cache $PKGS \
@@ -27,13 +27,12 @@ RUN apk update && apk upgrade \
 FROM alpine:latest
 ARG UID=1000
 
-LABEL version="0.5.0" maintainer="JJMerelo@GMail.com" raku_release=${RAKU_RELEASE} raku_user_uid=${UID}
+LABEL version="0.5.1" maintainer="JJMerelo@GMail.com" raku_release=${RAKU_RELEASE} raku_user_uid=${UID}
 
 COPY --from=base /usr/lib/libmoar.so /usr/lib
 COPY --from=base /usr/share/nqp/ /usr/share/nqp
 COPY --from=base /usr/share/perl6/ /usr/share/perl6
 COPY --from=base /usr/bin/moar /usr/bin/nqp /usr/bin/raku /usr/bin/perl6 /usr/bin/rakudo /usr/bin/
-
 
 RUN mkdir /github \
     && addgroup -S raku  && adduser -S raku -G raku --uid ${UID}
