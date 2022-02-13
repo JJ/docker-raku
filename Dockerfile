@@ -1,6 +1,6 @@
 FROM alpine:latest as base
 
-ARG RAKU_RELEASE=2021.12
+ARG RAKU_RELEASE=2022.02
 
 ENV PKGS="git make gcc musl-dev perl linux-headers bash"
 ENV RAKULIB="inst#/home/raku/.raku"
