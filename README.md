@@ -1,4 +1,4 @@
-# jjmerelo/raku container
+# Raku base image
 
 [![Docker Repository on Quay](https://quay.io/repository/jjmerelo/raku/status "Docker Repository on Quay")](https://quay.io/repository/jjmerelo/raku) [![Deploy weekly to Docker
 hub](https://github.com/JJ/docker-raku/actions/workflows/weekly.yaml/badge.svg)](https://github.com/JJ/docker-raku/actions/workflows/weekly.yaml) [![Test-create and publish a Docker image](https://github.com/JJ/docker-raku/actions/workflows/upload-ghcr.yaml/badge.svg)](https://github.com/JJ/docker-raku/actions/workflows/upload-ghcr.yaml)
@@ -6,10 +6,10 @@ hub](https://github.com/JJ/docker-raku/actions/workflows/weekly.yaml/badge.svg)]
 
 This is a bare-bones, lightweight, image that contains the bare
 [`raku`](https://raku.org) executables, without any frills. It's been created
-mainly for lightweightness, and as a base for a family of images.
+mainly for lightweightness, and as a base for a family of images (hosted elsewhere).
 
 This is intended mainly as a base image, not so much for direct use. Could be
-useful for CI, though.
+useful for CI, though as long as you add the additional libraries and utilities that you need.
 
 It includes a non-privileged user, also called `raku`, with its home
 directory. Binaries for `raku` are installed in privileged directories, however.
@@ -35,13 +35,12 @@ They come in two flavors
   made essentially to make them work as runners in GitHub actions. This one is
   also available in [GHCR as `raku-gha`](https://github.com/jj/docker-raku/pkgs/container/raku-gha).
 
-Additionally, the latest released Raku will be aliased to the `latest` tag.
+Additionally, the last Rakudo release  will be aliased to the `latest` tag.
 
 ## Source, issues
 
 Available at [this GitHub repo](https://github.com/JJ/docker-raku). Raise your
 issues, or offer your help there.
-
 
 ## See also
 
@@ -49,3 +48,7 @@ This image is the base for a series of other images, also in two flavors,
 regular and GitHub Actions. Start with
 [`alpine-raku`](https://github.com/JJ/alpine-raku) and check there for their
 published images.
+
+## License
+
+Released under the GPL version 3.
