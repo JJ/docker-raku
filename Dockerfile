@@ -13,7 +13,7 @@ RUN apk update && apk upgrade \
     && make --print-data-base \
     && make install\
     && cd .. \
-    && git clone --depth 1 --branch ${RAKU_RELEASE} git://github.com/Raku/nqp.git \
+    && git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/Raku/nqp.git \
     && cd nqp \
     && perl Configure.pl --backends=moar --prefix /usr \
     && make install \
