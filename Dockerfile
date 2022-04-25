@@ -1,6 +1,6 @@
 FROM alpine:latest as base
 
-ARG RAKU_RELEASE=2022.03
+ARG RAKU_RELEASE=2022.04
 
 ENV PKGS="git make gcc musl-dev perl linux-headers bash"
 ENV RAKULIB="inst#/home/raku/.raku"
@@ -10,7 +10,6 @@ RUN apk update && apk upgrade \
     && git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/MoarVM/MoarVM.git \
     && cd MoarVM \
     && perl Configure.pl --prefix /usr \
-    && make --print-data-base \
     && make install\
     && cd .. \
     && git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/Raku/nqp.git \
