@@ -1,4 +1,4 @@
-name: Test-create and publish a Docker image
+name: Test-create and publish a Docker image to GitHub registries
 
 on:
   push:
