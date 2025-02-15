@@ -28,8 +28,7 @@ jobs:
         run: echo ::notice::👍 Up to date
       - name: Exit if they are not the same
         if: ${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION != steps.latest-version.outputs.TAG_VERSION }}
-        with:
-          env:
-            DOCKERFILE_VERSION: ${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION }}
-            TAG_VERSION: ${{ steps.latest-version.outputs.TAG_VERSION }}
+        env:
+          DOCKERFILE_VERSION: ${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION }}
+          TAG_VERSION: ${{ steps.latest-version.outputs.TAG_VERSION }}
         run: echo ::echo::✖ Current version $(DOCKERFILE_VERSION) is not up to date with $(TAG_VERSION) && exit 1
