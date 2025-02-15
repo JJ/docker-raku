@@ -27,6 +27,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: jjmerelo/raku:latest, jjmerelo/raku:${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION }}
+          tags: jjmerelo/raku:latest,jjmerelo/raku:${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION }}
 
 
