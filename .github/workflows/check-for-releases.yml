@@ -26,11 +26,11 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const latestReleaseResponse = await github.rest.repos.getLatestRelease({
+            const latestRelease = await github.rest.repos.getLatestRelease({
                 owner: "rakudo",
                 repo: "rakudo"
             });
-            const latestRelease = JSON.parse(latestReleaseResponse);
+            core.info( Object.keys( latestRelease ));
             core.info( `Latest release {latestRelease}, tag {latestRelease.tag_name} ` );
             core.setOutput( "TAG_VERSION", latestRelease.tag_name );
       - name: All good if they are the same
