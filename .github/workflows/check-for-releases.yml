@@ -30,8 +30,8 @@ jobs:
                 owner: "rakudo",
                 repo: "rakudo"
             });
-            core.info( `Latest release {latestRelease} ` );
-            core.setOutput( "TAG_VERSION", latestRelease );
+            core.info( `Latest release {latestRelease}, tag {latestRelease.tag_name} ` );
+            core.setOutput( "TAG_VERSION", latestRelease.tag_name );
       - name: All good if they are the same
         if: ${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION == steps.latest-version.outputs.TAG_VERSION }}
         run: echo ::notice::👍 Up to date
