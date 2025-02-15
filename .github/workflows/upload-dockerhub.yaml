@@ -20,11 +20,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
+      - name: Get release in Dockerfile
+        id: dockerfile-version
+        run: echo DOCKERFILE_VERSION=$(.github/workflows/get_release.pl)>> "$GITHUB_OUTPUT"
       - name: Build and push to Docker Hub container image
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: jjmerelo/raku:latest
+          tags:
+            - jjmerelo/raku:latest
+            - jjmerelo/raku:${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION }}
 
 
