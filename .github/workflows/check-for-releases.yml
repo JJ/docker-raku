@@ -26,7 +26,10 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const latestRelease = await github.rest.repos.getLatestRelease( {"rakudo","rakudo"} );
+            const latestRelease = await github.rest.repos.getLatestRelease({
+                owner: "rakudo",
+                repo: "rakudo"
+            });
             core.info( `Latest release {latestRelease} ` );
             core.setOutput( "TAG_VERSION", latestRelease );
       - name: All good if they are the same
