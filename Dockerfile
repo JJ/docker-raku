@@ -20,8 +20,7 @@ RUN apk update && apk upgrade \
     && git clone --depth 1 --branch ${RAKU_RELEASE} https://github.com/rakudo/rakudo.git \
     && cd rakudo \
     && perl Configure.pl --backends=moar --prefix /usr \
-    && make install \
-    && ls /usr/share/nqp/
+    && make install
 
 FROM alpine:latest
 ARG UID=1000
