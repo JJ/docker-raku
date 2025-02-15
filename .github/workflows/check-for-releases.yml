@@ -22,11 +22,11 @@ jobs:
         run: echo DOCKERFILE_VERSION=$(.github/workflows/get_release.pl)>> "$GITHUB_OUTPUT"
       - name: Get latest release
         id: latest-version
-        run: |
-          release=$(curl -m 10 --connect-timeout 5 "https://api.github.com/repos/raludo/rakudo/releases/latest")
-          echo "Release=$release"
-          echo TAG_VERSION=$(echo "$release" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')>> "$GITHUB_OUTPUT"
-          echo $GITHUB_OUTPUT
+        uses: actions/github-script@v7
+        script: |
+          const latestRelease = github.rest.repos.getLatestRelease( {"rakudo","rakudo"} );
+          core.info( "Latest release {latestRelease} " );
+          core.setOutput( "TAG_VERSION", latestRelease );
       - name: All good if they are the same
         if: ${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION == steps.latest-version.outputs.TAG_VERSION }}
         run: echo ::notice::👍 Up to date
