@@ -34,4 +34,4 @@ jobs:
         env:
           DOCKERFILE_VERSION: ${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION }}
           TAG_VERSION: ${{ steps.latest-version.outputs.TAG_VERSION }}
-        run: echo ::echo::✖ Current version $(DOCKERFILE_VERSION) is not up to date with $(TAG_VERSION) && exit 1
+        run: echo ::error::✖ Current version $(DOCKERFILE_VERSION) is not up to date with $(TAG_VERSION) && exit 1
