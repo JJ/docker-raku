@@ -26,7 +26,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const latestReleaserResponse = await github.rest.repos.getLatestRelease({
+            const latestReleaseResponse = await github.rest.repos.getLatestRelease({
                 owner: "rakudo",
                 repo: "rakudo"
             });
