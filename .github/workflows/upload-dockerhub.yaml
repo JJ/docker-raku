@@ -5,6 +5,8 @@ on:
     paths:
       - Dockerfile
       - .github/workflows/upload-dockerhub.yaml
+    schedule:
+      - cron: "0 1 1 * *"
 
 jobs:
   build-and-push-image:

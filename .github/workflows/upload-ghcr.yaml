@@ -5,6 +5,8 @@ on:
     paths:
       - Dockerfile
       - .github/workflows/upload-ghcr.yaml
+    schedule:
+      - cron: "0 1 1 * *"
 
 env:
   REGISTRY: ghcr.io
