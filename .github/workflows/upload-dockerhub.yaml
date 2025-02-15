@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build and push to GHCR container image
+      - name: Build and push to Docker Hub container image
         uses: docker/build-push-action@v3
         with:
           push: true
