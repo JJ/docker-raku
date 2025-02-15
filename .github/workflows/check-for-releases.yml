@@ -26,8 +26,8 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const latestRelease = github.rest.repos.getLatestRelease( {"rakudo","rakudo"} );
-            core.info( "Latest release {latestRelease} " );
+            const latestRelease = await github.rest.repos.getLatestRelease( {"rakudo","rakudo"} );
+            core.info( `Latest release {latestRelease} ` );
             core.setOutput( "TAG_VERSION", latestRelease );
       - name: All good if they are the same
         if: ${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION == steps.latest-version.outputs.TAG_VERSION }}
