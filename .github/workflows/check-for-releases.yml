@@ -1,0 +1,35 @@
+name: Test-create and publish a Docker image to GitHub registries
+
+on:
+  push:
+    paths:
+      - Dockerfile
+      - .github/workflows/check-for-releases.yml
+  schedule:
+    - cron: "0 1 1 * *"
+
+jobs:
+  check-last-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Get release in Dockerfile
+        id: dockerfile-version
+        run: echo DOCKERFILE_VERSION=$(.github/workflows/get_release.pl)>> "$GITHUB_OUTPUT"
+      - name: Get latest release
+        id: latest-version
+        run: |
+          release=$(curl --silent -m 10 --connect-timeout 5 "https://api.github.com/repos/raludo/rakudo/releases/latest")
+          echo TAG_VERSION=$(echo "$release" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')>> "$GITHUB_OUTPUT"
+      - name: All good if they are the same
+        if: ${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION == steps.latest-version.outputs.TAG_VERSION }}
+        run: echo ::notice::👍 Up to date
+      - name: Exit if they are not the same
+        if: ${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION != steps.latest-version.outputs.TAG_VERSION }}
+        with:
+          env:
+            DOCKERFILE_VERSION: ${{ steps.dockerfile-version.outputs.DOCKERFILE_VERSION }}
+            TAG_VERSION: ${{ steps.latest-version.outputs.TAG_VERSION }}
+        run: echo ::echo::✖ Current version $(DOCKERFILE_VERSION) is not up to date with $(TAG_VERSION) && exit 1
