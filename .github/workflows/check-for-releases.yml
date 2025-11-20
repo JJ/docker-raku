@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Check out source
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Get release in Dockerfile
         id: dockerfile-version
         run: echo DOCKERFILE_VERSION=$(.github/workflows/get_release.pl)>> "$GITHUB_OUTPUT"
