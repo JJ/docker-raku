@@ -30,7 +30,7 @@ jobs:
 
       - name: Set up Docker Buildx for multiarch
         id: buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
         with:
           driver-opts: env.BUILDKIT_STEP_LOG_MAX_SIZE=10485760
 
